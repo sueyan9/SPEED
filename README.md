@@ -14,15 +14,16 @@ This is a full-stack web application built with the MNNN stack:
 cd frontend
 npm install
 npm run dev
-
+```
 ### Backend (Nest.js)
 
 ```bash
 cd backend
 npm install
 npm run start:dev
-
+```
 ### Deployment
 
 ```bash
 Coming soon – Vercel for frontend, and Render or Railway for backend.
+``` 
