@@ -25,5 +25,5 @@ npm run start:dev
 ### Deployment
 
 ```bash
-Coming soon – Vercel for frontend
+Vercel for frontend
 ``` 
