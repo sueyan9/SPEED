@@ -40,7 +40,7 @@ export default function SignupForm() {
       });
       const data = await res.json();
       if (data.success) {
-        setMessage("Registration Successfully！");
+        setMessage("Registered Successfully！");
       } else {
         setMessage(data.message || "Registration failed");
     }
