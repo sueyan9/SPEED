@@ -1,0 +1,53 @@
+form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.98rem;
+}
+
+button[type="submit"] {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+button[type="submit"]:hover {
+  background: #357ab8;
+}

@@ -25,5 +25,5 @@ npm run start:dev
 ### Deployment
 
 ```bash
-Coming soon – Vercel for frontend, and Render or Railway for backend.
+Coming soon – Vercel for frontend
 ``` 
