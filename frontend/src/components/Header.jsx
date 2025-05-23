@@ -16,7 +16,7 @@ export default function Header() {
 
   const dayOfWeek = currentTime.toLocaleDateString("en-US", { weekday: "long" });
   const dateStr = currentTime.toLocaleDateString("en-CA"); // YYYY-MM-DD
-  const timeStr = currentTime.toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const timeStr = currentTime.toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit' });
 
   return (
     <div className="header-root">

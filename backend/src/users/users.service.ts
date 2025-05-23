@@ -21,4 +21,16 @@ export class UsersService {
       return { success: false, message: 'Server error' };
     }
   }
+  async login(loginData: any): Promise<{ success: boolean; message?: string }> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const { email, password } = loginData;
+    const user = await this.userModel.findOne({ email });
+    if (!user) {
+      return { success: false, message: 'User not found' };
+    }
+    if (user.password !== password) {
+      return { success: false, message: 'Incorrect password' };
+    }
+    return { success: true };
+  }
 }

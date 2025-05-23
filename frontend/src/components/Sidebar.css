@@ -2,7 +2,7 @@
     width: 260px;
     background: rgb(240, 150, 147);
     color: #fff;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 24px 16px;
@@ -62,7 +62,6 @@
   }
   
   .logout {
-    margin-top: auto;
     border-top: 1px solid #fff;
-    padding-top: 16px;
+    padding: 16px 0 24px 0;
   }

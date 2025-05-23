@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import Link from "next/link";
 import "./SignupForm.css";
  
 
@@ -100,7 +101,7 @@ return (
       </button>
       <div style={{ color: "red", marginTop: 10 }}>{message}</div>
       <div className="signin-tip">
-        Already have an account? <a href="/login">Sign In</a>
+        Already have an account? <Link href="/login">Sign In</Link>
       </div>
     </form>
   </div>
