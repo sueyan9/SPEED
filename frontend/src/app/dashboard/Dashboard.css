@@ -1,0 +1,198 @@
+.dashboard-root {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f3f4f6;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 24px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .logo-red {
+    color: #ef4444;
+  }
+  
+  .search-input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 6px 12px;
+    width: 280px;
+    font-size: 1rem;
+  }
+  
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  .date-bold {
+    font-weight: bold;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 32px;
+    overflow: auto;
+  }
+  
+  .welcome {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  
+  .cards-row {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .card-col {
+    flex: 1;
+  }
+  
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .card-title.pending span {
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .card-title.completed span {
+    width: 8px;
+    height: 8px;
+    background: #fb923c;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .card-title h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 18px;
+    margin-bottom: 18px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .card-completed {
+    opacity: 0.6;
+  }
+  .card-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .card-title-text {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  .card-topic {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 2px;
+  }
+  .card-link {
+    color: #2563eb;
+    font-size: 0.85rem;
+    text-decoration: underline;
+  }
+  .card-summary {
+    font-size: 0.95rem;
+    margin-top: 6px;
+  }
+  
+  .modal-mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+  .modal {
+    background: #fff;
+    border-radius: 14px;
+    width: 420px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    position: relative;
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .modal-input, .modal-textarea {
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  .modal-textarea {
+    min-height: 60px;
+    resize: vertical;
+  }
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .modal-btn {
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .modal-btn.cancel {
+    background: #eee;
+    color: #333;
+  }
+  .modal-btn.create {
+    background: #ef4444;
+    color: #fff;
+  }
