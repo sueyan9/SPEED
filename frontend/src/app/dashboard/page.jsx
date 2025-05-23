@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from 'react';
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
+import SubmissionForm from "../../components/SubmissionForm"; 
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -16,17 +17,26 @@ export default function Dashboard() {
     },
   ]);
 
-  const [formData, setFormData] = useState({
-    title: "",
-    link: "",
-    topic: "",
-    summary: "",
-  });
-
-  const handleSubmit = () => {
-    setSubmits([...submits, { ...formData, status: "pending" }]);
-    setShowModal(false);
-    setFormData({ title: "", link: "", topic: "", summary: "" });
+  const handleSubmit = async (formData) => {
+    // send POST request to backend
+    try {
+      const res = await fetch("http://localhost:3005/api/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ ...formData, status: "pending" })
+      });
+      if (!res.ok) {
+        throw new Error("Failed to submit");
+      }
+      const data = await res.json();
+      // update the submits state
+      setSubmits([...submits, data]);
+      setShowModal(false);
+    } catch (err) {
+      alert("Submission failed: " + err.message);
+    }
   };
 
   return (
@@ -123,52 +133,10 @@ export default function Dashboard() {
                 Go Back
               </button>
             </div>
-            <input
-              className="modal-input"
-              placeholder="Title"
-              value={formData.title}
-              onChange={(e) =>
-                setFormData({ ...formData, title: e.target.value })
-              }
+            <SubmissionForm
+              onSubmit={handleSubmit} 
+              onCancel={() => setShowModal(false)}
             />
-            <input
-              className="modal-input"
-              placeholder="Link"
-              value={formData.link}
-              onChange={(e) =>
-                setFormData({ ...formData, link: e.target.value })
-              }
-            />
-            <input
-              className="modal-input"
-              placeholder="Topic"
-              value={formData.topic}
-              onChange={(e) =>
-                setFormData({ ...formData, topic: e.target.value })
-              }
-            />
-            <textarea
-              className="modal-textarea"
-              placeholder="Summary"
-              value={formData.summary}
-              onChange={(e) =>
-                setFormData({ ...formData, summary: e.target.value })
-              }
-            />
-            <div className="modal-actions">
-              <button
-                onClick={() => setShowModal(false)}
-                className="modal-btn cancel"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSubmit}
-                className="modal-btn create"
-              >
-                Create
-              </button>
-            </div>
           </div>
         </div>
       )}
