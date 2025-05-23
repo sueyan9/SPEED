@@ -196,3 +196,22 @@
     background: #ef4444;
     color: #fff;
   }
+  .pending-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .new-submit-btn {
+    background: #f35f5f;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .new-submit-btn:hover {
+    background: rgb(240, 150, 147);
+  }

@@ -1,6 +1,6 @@
 .sidebar {
     width: 260px;
-    background: #ef4444;
+    background: rgb(240, 150, 147);
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -35,7 +35,7 @@
   }
   
   .menu {
-    flex: 1;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     gap: 10px;

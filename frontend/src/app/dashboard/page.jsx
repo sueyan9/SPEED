@@ -60,10 +60,15 @@ export default function Dashboard() {
           <div className="cards-row">
             {/* Pending */}
             <div className="card-col">
-              <div className="card-title pending">
-                <span></span>
-                <h2>Pending</h2>
-              </div>
+            <div className="pending-header">
+                <div className="card-title pending">
+                    <span></span>
+                    <h2>Pending</h2>
+                </div>
+                <button className="new-submit-btn" onClick={() => setShowModal(true)}>
+                    + New Submit
+                </button>
+                </div>
               {submits
                 .filter((s) => s.status === "pending")
                 .map((item, idx) => (
