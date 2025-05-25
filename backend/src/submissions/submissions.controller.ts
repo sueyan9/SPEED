@@ -18,7 +18,6 @@ export class SubmissionsController {
   // new submission
   @Post()
   async create(@Body() body: Partial<Submission>) {
-    console.log('Received data in controller:');
     // Validate the request body
     if (!body.title || typeof body.title !== 'string') {
       throw new BadRequestException('Title is required and must be a string.');

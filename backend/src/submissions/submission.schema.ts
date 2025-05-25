@@ -35,6 +35,9 @@ export class Submission extends Document {
 
   @Prop({ default: 'pending' }) // default status to 'pending'
   status: string;
+
+  @Prop({ required: true })
+  userId: string;
 }
 
 export const SubmissionSchema = SchemaFactory.createForClass(Submission);
