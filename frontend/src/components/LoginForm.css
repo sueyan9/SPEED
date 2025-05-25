@@ -1,0 +1,100 @@
+.login-card {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    padding: 40px 32px;
+    max-width: 900px;
+    margin: 60px auto;
+    align-items: center;
+    gap: 48px;
+  }
+  
+  .login-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .login-form h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 18px;
+  }
+  
+  .input-row {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #bbb;
+    border-radius: 8px;
+    padding: 0 12px;
+    background: #fafafa;
+    margin-bottom: 8px;
+  }
+  
+  .input-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    color: #888;
+  }
+  
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 14px 0;
+    font-size: 1.1rem;
+    flex: 1;
+  }
+  
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .login-btn {
+    background: #e28d8d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .login-btn:hover {
+    background: #d16a6a;
+  }
+  
+  .signup-tip {
+    margin-top: 18px;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .signup-tip a {
+    color: #2563eb;
+    text-decoration: underline;
+    margin-left: 4px;
+  }
+  
+  .login-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-img img {
+    max-width: 340px;
+    width: 100%;
+    height: auto;
+  }
