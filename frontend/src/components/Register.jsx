@@ -99,13 +99,12 @@ export default function SignupForm() {
           <input name="confirmPassword" type="password" placeholder="Confirm Password" value={form.confirmPassword} onChange={handleChange} required />
         </div>
         <div className="input-row">
-          <label style={{ marginRight: 8 }}>Role:</label>
+          <FaUser className="input-icon" />
           <select
-            name="role"
-            value={form.role}
-            onChange={handleChange}
-            required
-            style={{ flex: 1 }}
+              name="role"
+              value={form.role}
+              onChange={handleChange}
+              required
           >
             <option value="user">User</option>
             <option value="moderator">Moderator</option>

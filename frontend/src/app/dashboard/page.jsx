@@ -139,7 +139,7 @@ export default function Dashboard() {
                           </button>
                         </div>
                         {submits
-                            .filter((s) => s.status === "pending")
+                            .filter((s) => s.status === "pending"|| s.status === "moderator-approved")
                             .map((item, idx) => (
                                 <div key={idx} className="card">
                                   <img
@@ -168,11 +168,41 @@ export default function Dashboard() {
                           <span></span>
                           <h2>Completed Submit</h2>
                         </div>
+                        <h3>Approved</h3>
                         {submits
                             .filter(
                                 (s) =>
-                                    s.status === "analyst_approved" &&
-                                    s.author === user.username
+                                    (s.status === "analyst-approved" || s.status === "moderator-approved") &&
+                                    s.userId === user._id
+                            )
+                            .map((item, idx) => (
+                                <div key={idx} className="card card-completed">
+                                  <img
+                                      src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=facearea&w=96&h=96"
+                                      alt="thumb"
+                                      className="card-thumb"
+                                  />
+                                  <div>
+                                    <div className="card-title-text">{item.title}</div>
+                                    <a
+                                        className="card-link"
+                                        href={item.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                      {item.link}
+                                    </a>
+                                    <p className="card-summary">{item.summary}</p>
+                                </div>
+                                </div>
+                            ))}
+
+                        <h3>Rejected</h3>
+                        {submits
+                            .filter(
+                                (s) =>
+                                    (s.status === "rejected" || s.status === "analyst-rejected" || s.status === "moderator-rejected") &&
+                                    s.userId === user._id
                             )
                             .map((item, idx) => (
                                 <div key={idx} className="card card-completed">
@@ -229,7 +259,7 @@ export default function Dashboard() {
                                   <div style={{ marginTop: 8 }}>
                                     <button
                                         onClick={() =>
-                                            handleReview(item._id, "moderator_approved")
+                                            handleReview(item._id, "moderator-approved")
                                         }
                                         style={{ marginRight: 8 }}
                                     >
@@ -258,7 +288,7 @@ export default function Dashboard() {
                         <h2>Moderator Approved</h2>
                       </div>
                       {submits
-                          .filter((s) => s.status === "moderator_approved")
+                          .filter((s) => s.status === "moderator-approved")
                           .map((item) => (
                               <div key={item._id} className="card">
                                 <img
@@ -280,7 +310,7 @@ export default function Dashboard() {
                                   <div style={{ marginTop: 8 }}>
                                     <button
                                         onClick={() =>
-                                            handleAnalyst(item._id, "analyst_approved")
+                                            handleAnalyst(item._id, "analyst-approved")
                                         }
                                         style={{ marginRight: 8 }}
                                     >

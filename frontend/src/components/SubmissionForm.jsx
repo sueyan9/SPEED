@@ -42,7 +42,7 @@ export default function SubmissionForm({ onSubmit, onCancel, initialData }) {
         }
 
         if (onSubmit) {
-            onSubmit(formData); // 调用父组件的提交逻辑
+            onSubmit(formData); // logic for using parent components
         }
     };
 
