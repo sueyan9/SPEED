@@ -1,4 +1,5 @@
 module.exports = {
+
     transform: {
         '^.+\\.(js|jsx)$': 'babel-jest',
     },
@@ -8,3 +9,4 @@ module.exports = {
     moduleFileExtensions: ['js', 'jsx'],
     testEnvironment: 'jsdom',
 };
+
