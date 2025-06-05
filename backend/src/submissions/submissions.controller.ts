@@ -13,7 +13,7 @@ import { Submission } from './submission.schema';
 
 @Controller('api/submissions')
 export class SubmissionsController {
-  constructor(private readonly submissionsService: SubmissionsService) {}
+  constructor(private readonly submissionsService: SubmissionsService) { }
 
   // new submission
   @Post()
@@ -74,5 +74,14 @@ export class SubmissionsController {
       throw new BadRequestException('Status is required and must be a string.');
     }
     return this.submissionsService.updateStatus(id, status);
+  }
+
+  // search submissions
+  @Get('search')
+  async search(@Query('q') query: string): Promise<Submission[]> {
+    if (!query || typeof query !== 'string') {
+      throw new BadRequestException('Query parameter "q" is required and must be a string.');
+    }
+    return this.submissionsService.search(query);
   }
 }
