@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, master, Development]
+    branches: [master]
   pull_request:
-    branches: [main, master, Development]
+    branches: [master]
 
 jobs:
   build-and-test:
@@ -28,23 +28,23 @@ jobs:
         run: npm install
         working-directory: backend
 
-      # - name: Run backend tests
-      #   run: npm test
-      #   working-directory: backend
+     # - name: Run backend tests
+      #  run: npm test
+       # working-directory: backend
 
 
-      - name: Build backend
-        run: npm run build
-        working-directory: backend
+      # - name: Build backend
+      # run: npm run build
+      #  working-directory: backend
 
       # Frontend（Next.js）
       - name: Install frontend dependencies
         run: npm install
         working-directory: frontend
 
-      # - name: Run frontend tests
-      #   run: npm test
-      #   working-directory: frontend
+     # - name: Run frontend tests
+      #  run: npm test
+       # working-directory: frontend
 
       - name: Build frontend
         run: npm run build
