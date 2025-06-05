@@ -38,9 +38,9 @@ jobs:
       #  working-directory: backend
 
       # Frontend（Next.js）
-      - name: Install frontend dependencies
-        run: npm install
-        working-directory: frontend
+     # - name: Install frontend dependencies
+      #  run: npm install
+       # working-directory: frontend
 
       - name: Run frontend tests
         run: npm test
