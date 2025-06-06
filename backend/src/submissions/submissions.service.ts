@@ -35,19 +35,24 @@ export class SubmissionsService {
     return updated;
   }
 
-  async search(query: string): Promise<Submission[]> {
-  const regex = new RegExp(query, 'i');
+  async search(query: string, status = 'approved'): Promise<Submission[]> {
+    const regex = new RegExp(query, 'i');
 
-  return this.submissionModel.find({
-    $or: [
-      { title: regex },
-      { authors: regex },
-      { journal: regex },
-      { claim: regex },
-      { evidence: regex },
-      { doi: regex }
-    ]
-  }).exec();
-}
+    const filter: any = {
+      $or: [
+        { title: regex },
+        { authors: regex },
+        { journal: regex },
+        { claim: regex },
+        { evidence: regex },
+        { doi: regex },
+      ],
+    };
 
+    if (status && status.trim().length > 0) {
+      filter.status = status;
+    }
+
+    return this.submissionModel.find(filter).exec();
+  }
 }

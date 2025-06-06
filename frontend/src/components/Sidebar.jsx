@@ -1,7 +1,7 @@
 import './Sidebar.css'; 
 import React from "react";
 
-export default function Sidebar({ onNewSubmit }) {
+export default function Sidebar({ onNewSubmit , user}) {
   return (
     <div className="sidebar">
       {/* User Info */}
@@ -11,8 +11,9 @@ export default function Sidebar({ onNewSubmit }) {
           alt="avatar"
           className="avatar"
         />
-        <div className="username">Sundar Gurung</div>
-        <div className="email">sundar@gmail.com</div>
+        <div className="username">{user?.name || "Unknown User"}</div>
+        <div className="email">{user?.email || "No Email"}</div>
+        <div className="role">{user?.role ? `Role: ${user.role}` : ""}</div>
       </div>
       {/* Menu */}
       <nav className="menu">

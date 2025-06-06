@@ -82,6 +82,7 @@ export class SubmissionsController {
     if (!query || typeof query !== 'string') {
       throw new BadRequestException('Query parameter "q" is required and must be a string.');
     }
-    return this.submissionsService.search(query);
+    // just return data with status='approved'
+    return this.submissionsService.search(query, 'approved');
   }
 }
