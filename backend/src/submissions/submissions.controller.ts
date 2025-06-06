@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import { SubmissionsService } from './submissions.service';
 import { Submission } from './submission.schema';
+import * as console from "node:console";
 
 @Controller('api/submissions')
 export class SubmissionsController {
@@ -122,7 +123,8 @@ export class SubmissionsController {
     if (!query || typeof query !== 'string') {
       throw new BadRequestException('Query parameter "q" is required and must be a string.');
     }
+    console.log("222");
     // just return data with status='approved'
-    return this.submissionsService.search(query, 'approved');
+    return this.submissionsService.search(query, 'analyst-approved');
   }
 }

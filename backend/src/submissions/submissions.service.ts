@@ -34,24 +34,25 @@ export class SubmissionsService {
     return updated;
   }
 
-  async search(query: string, status = 'approved'): Promise<Submission[]> {
+  async search(query: string, status = 'analyst-approved'): Promise<Submission[]> {
     const regex = new RegExp(query, 'i');
 
-    const filter: any = {
-      $or: [
-        { title: regex },
-        { authors: regex },
-        { journal: regex },
-        { claim: regex },
-        { evidence: regex },
-        { doi: regex },
-      ],
-    };
-
-    if (status && status.trim().length > 0) {
-      filter.status = status;
-    }
-
-    return this.submissionModel.find(filter).exec();
+    return this.submissionModel
+      .find({
+        $and: [
+          {
+            $or: [
+              { title: regex },
+              { authors: regex },
+              { journal: regex },
+              { claim: regex },
+              { evidence: regex },
+              { doi: regex },
+            ],
+          },
+          { status },
+        ],
+      })
+      .exec();
   }
 }

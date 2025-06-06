@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { SubmissionsModule } from './submissions/submissions.module';
+import { AppController } from './app.controller'; // ⬅️ 加上这个
+import { AppService } from './app.service';       // ⬅️ 加上这个
 
 @Module({
   imports: [
@@ -21,5 +23,7 @@ import { SubmissionsModule } from './submissions/submissions.module';
     UsersModule,
     SubmissionsModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
