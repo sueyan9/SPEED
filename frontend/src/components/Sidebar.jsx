@@ -3,18 +3,24 @@ import './Sidebar.css';
 
 import React from "react";
 
-export default function Sidebar({ onNewSubmit }) {
+export default function Sidebar({ user , onNewSubmit }) {
+  const avatar = "https://randomuser.me/api/portraits/men/32.jpg";
+  const username = user?.username || "Guest";
+  const email = user?.email || "";
+
+
   return (
     <div className="sidebar">
       {/* User Info */}
       <div className="user-info">
-        <img
-          src="https://randomuser.me/api/portraits/men/32.jpg"
+      <img
+          src={"https://randomuser.me/api/portraits/men/32.jpg"}
           alt="avatar"
           className="avatar"
         />
-        <div className="username">Sundar Gurung</div>
-        <div className="email">sundar@gmail.com</div>
+        <div className="username">{user.username}</div>
+        <div className="email">{user.email}</div>
+        <div className="role">{user.role}</div>
       </div>
       {/* Menu */}
       <nav className="menu">
@@ -30,6 +36,18 @@ export default function Sidebar({ onNewSubmit }) {
         <button className="menu-item" onClick={onNewSubmit}>
           <span>➕</span> New Submit
         </button>
+         {/* only moderator can see this menu */}
+         {user.role === "moderator" && (
+          <div className="menu-item">
+            <span>📝</span> Review Submissions
+          </div>
+        )}
+        {/* only analyst can see this menu */}
+        {user.role === "analyst" && (
+          <div className="menu-item">
+            <span>🔍</span> Analyst Approvals
+          </div>
+        )}
         <div className="menu-item">
           <span>⚙️</span> Settings
         </div>

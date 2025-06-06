@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+export type SubmissionDocument = Submission & Document;
 @Schema()
 export class Submission extends Document {
   @Prop({ required: true })
@@ -33,7 +34,18 @@ export class Submission extends Document {
   @Prop()
   evidence: string;
 
-  @Prop({ default: 'pending' }) // default status to 'pending'
+  @Prop({
+    default: 'pending',
+    enum: [
+      'pending',
+      'rejected',
+      'moderator-approved',
+      'moderator-rejected',
+      'analyst-approved',
+      'analyst-rejected',
+      'completed',
+    ],
+  }) // default status to 'pending'
   status: string;
 }
 

@@ -7,6 +7,7 @@ import {
   Patch,
   Query,
   BadRequestException,
+  NotFoundException,
 } from '@nestjs/common';
 import { SubmissionsService } from './submissions.service';
 import { Submission } from './submission.schema';
@@ -18,7 +19,6 @@ export class SubmissionsController {
   // new submission
   @Post()
   async create(@Body() body: Partial<Submission>) {
-    console.log('Received data in controller:');
     // Validate the request body
     if (!body.title || typeof body.title !== 'string') {
       throw new BadRequestException('Title is required and must be a string.');
@@ -70,11 +70,48 @@ export class SubmissionsController {
   // change submission status
   @Patch(':id/status')
   async updateStatus(@Param('id') id: string, @Body('status') status: string) {
+    const validStatuses = [
+      'pending',
+      'moderator-approved',
+      'moderator-rejected',
+      'analyst-approved',
+      'analyst-rejected',
+      'completed',
+    ];
     if (!status || typeof status !== 'string') {
       throw new BadRequestException('Status is required and must be a string.');
     }
+    if (!validStatuses.includes(status)) {
+      throw new BadRequestException(
+        `Invalid status. Must be one of: ${validStatuses.join(', ')}`,
+      );
+    }
+
     return this.submissionsService.updateStatus(id, status);
   }
+
+  @Post(':id/review')
+  async reviewSubmission(
+    @Param('id') id: string,
+    @Body('status') status: string,
+  ) {
+    const updated = await this.submissionsService.updateStatus(id, status);
+    if (!updated) {
+      throw new NotFoundException('Submission not found');
+    }
+    return updated;
+  }
+  @Post(':id/analyst_review')
+  async analystReviewSubmission(
+    @Param('id') id: string,
+    @Body('status') status: string,
+  ) {
+    const updated = await this.submissionsService.updateStatus(id, status);
+    if (!updated) {
+      throw new NotFoundException('Submission not found');
+    }
+    return updated;
+
 
   // search submissions
   @Get('search')
@@ -83,5 +120,6 @@ export class SubmissionsController {
       throw new BadRequestException('Query parameter "q" is required and must be a string.');
     }
     return this.submissionsService.search(query);
+
   }
 }

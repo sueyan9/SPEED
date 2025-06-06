@@ -32,7 +32,10 @@ export default function LoginForm() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (data.success) {
+    
+      if (data.success&& data.token && data.user) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         router.push("/dashboard");
       } else {
         setMessage(data.message || "Login failed. Please try again.");
