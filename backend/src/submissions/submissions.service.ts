@@ -34,19 +34,25 @@ export class SubmissionsService {
     return updated;
   }
 
-  async search(query: string): Promise<Submission[]> {
-  const regex = new RegExp(query, 'i');
+  async search(query: string, status = 'analyst-approved'): Promise<Submission[]> {
+    const regex = new RegExp(query, 'i');
 
-  return this.submissionModel.find({
-    $or: [
-      { title: regex },
-      { authors: regex },
-      { journal: regex },
-      { claim: regex },
-      { evidence: regex },
-      { doi: regex }
-    ]
-  }).exec();
-}
-
+    return this.submissionModel
+      .find({
+        $and: [
+          {
+            $or: [
+              { title: regex },
+              { authors: regex },
+              { journal: regex },
+              { claim: regex },
+              { evidence: regex },
+              { doi: regex },
+            ],
+          },
+          { status },
+        ],
+      })
+      .exec();
+  }
 }

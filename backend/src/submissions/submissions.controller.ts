@@ -11,10 +11,12 @@ import {
 } from '@nestjs/common';
 import { SubmissionsService } from './submissions.service';
 import { Submission } from './submission.schema';
+import * as console from "node:console";
 
 @Controller('api/submissions')
 export class SubmissionsController {
-  constructor(private readonly submissionsService: SubmissionsService) { }
+  constructor(private readonly submissionsService: SubmissionsService) {
+  }
 
   // new submission
   @Post()
@@ -83,7 +85,7 @@ export class SubmissionsController {
     }
     if (!validStatuses.includes(status)) {
       throw new BadRequestException(
-        `Invalid status. Must be one of: ${validStatuses.join(', ')}`,
+          `Invalid status. Must be one of: ${validStatuses.join(', ')}`,
       );
     }
 
@@ -92,8 +94,8 @@ export class SubmissionsController {
 
   @Post(':id/review')
   async reviewSubmission(
-    @Param('id') id: string,
-    @Body('status') status: string,
+      @Param('id') id: string,
+      @Body('status') status: string,
   ) {
     const updated = await this.submissionsService.updateStatus(id, status);
     if (!updated) {
@@ -101,10 +103,11 @@ export class SubmissionsController {
     }
     return updated;
   }
+
   @Post(':id/analyst_review')
   async analystReviewSubmission(
-    @Param('id') id: string,
-    @Body('status') status: string,
+      @Param('id') id: string,
+      @Body('status') status: string,
   ) {
     const updated = await this.submissionsService.updateStatus(id, status);
     if (!updated) {
@@ -112,6 +115,7 @@ export class SubmissionsController {
     }
     return updated;
 
+  }
 
   // search submissions
   @Get('search')
@@ -119,7 +123,8 @@ export class SubmissionsController {
     if (!query || typeof query !== 'string') {
       throw new BadRequestException('Query parameter "q" is required and must be a string.');
     }
-    return this.submissionsService.search(query);
-
+    console.log("222");
+    // just return data with status='approved'
+    return this.submissionsService.search(query, 'analyst-approved');
   }
 }
