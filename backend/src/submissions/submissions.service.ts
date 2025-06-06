@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Submission } from './submission.schema';
+import { Submission, SubmissionDocument } from './submission.schema';
 
 @Injectable()
 export class SubmissionsService {
@@ -10,7 +10,6 @@ export class SubmissionsService {
   ) {}
 
   async create(data: Partial<Submission>): Promise<Submission> {
-    console.log('Received data in service:', data);
     const created = new this.submissionModel(data);
     return created.save();
   }
