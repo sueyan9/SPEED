@@ -98,3 +98,12 @@
 .signin-tip a:hover {
   text-decoration: underline;
 }
+.signup-form .input-row select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: white;
+  height: 40px;
+  width: 100%;
+}

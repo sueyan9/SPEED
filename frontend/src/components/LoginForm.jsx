@@ -26,13 +26,16 @@ export default function LoginForm() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3005/users/login", {
+      const res = await fetch("/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (data.success) {
+    
+      if (data.success&& data.token && data.user) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         router.push("/dashboard");
       } else {
         setMessage(data.message || "Login failed. Please try again.");
