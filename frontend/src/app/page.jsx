@@ -1,6 +1,5 @@
 import React from 'react';
 
-// app/page.tsx
 export default function HomePage() {
     return (
       <main>
