@@ -112,7 +112,7 @@ export class SubmissionsController {
     }
     return updated;
 
-
+  }
   // search submissions
   @Get('search')
   async search(@Query('q') query: string): Promise<Submission[]> {
