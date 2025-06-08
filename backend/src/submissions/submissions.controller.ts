@@ -123,7 +123,6 @@ export class SubmissionsController {
     if (!query || typeof query !== 'string') {
       throw new BadRequestException('Query parameter "q" is required and must be a string.');
     }
-    console.log("222");
     // just return data with status='approved'
     return this.submissionsService.search(query, 'analyst-approved');
   }
